@@ -1,6 +1,6 @@
 ---
 name: kimi
-description: Call the Kimi API (kimi-k2.6, kimi-k2.5) through RunAPI using the official OpenAI SDK or compatible clients. Use when the user asks for Kimi chat, streaming completions, Anthropic or Gemini protocol compatibility, or when they want to point an existing OpenAI SDK setup at RunAPI as the base URL.
+description: Call the Kimi API (kimi-k2.7-code, kimi-k2.6, kimi-k2.5) through RunAPI using the official OpenAI SDK or compatible clients. Use when the user asks for Kimi chat, streaming completions, Anthropic or Gemini protocol compatibility, or when they want to point an existing OpenAI SDK setup at RunAPI as the base URL.
 documentation: https://runapi.ai/models/kimi.md
 provider_page: https://runapi.ai/providers/moonshot-ai.md
 catalog: https://runapi.ai/models.md
@@ -47,7 +47,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="kimi-k2.6",
+    model="kimi-k2.7-code",
     messages=[{"role": "user", "content": "Explain this code review finding."}],
 )
 print(response.choices[0].message.content)
@@ -125,6 +125,7 @@ curl https://runapi.ai/v1/models \
 
 | Model ID | Use when |
 |---|---|
+| `kimi-k2.7-code` | Dedicated coding model with always-on thinking |
 | `kimi-k2.6` | Latest Kimi K2 chat workloads |
 | `kimi-k2.5` | Kimi K2.5 compatibility |
 
