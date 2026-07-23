@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.2.1](https://github.com/runapi-ai/kimi/releases/tag/v0.2.1) - 2026-07-23
+
+### Changed
+- Document the shared basic-text contract across Chat Completions, Responses, Messages, and Gemini native.
+
+### Fixed
+- Clarify reasoning, tools, multimodal, cache, continuation, sampling, and output-limit behavior for `kimi-k3` and `kimi-k2.7-code`.
+
+
 ## [v0.2.0](https://github.com/runapi-ai/kimi/releases/tag/v0.2.0) - 2026-07-23
 
 ### Added

@@ -91,6 +91,22 @@ Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 | `kimi-k2.6` | Latest Kimi K2 chat workloads |
 | `kimi-k2.5` | Kimi K2.5 compatibility |
 
+## K3 and K2.7 Code capability boundary
+
+RunAPI supports basic text, final answers, canonical reasoning/cache Usage, and
+automatic cache handling for `kimi-k3` and `kimi-k2.7-code` across Chat
+Completions, Responses, Messages, and Gemini native. Raw `reasoning_content` is
+not returned.
+
+Tools and tool history, multimodal content, structured output, explicit cache
+controls, stateful continuation, signed thoughts, and explicit reasoning
+controls are not currently accepted by RunAPI. Omit sampling
+controls, or use `temperature=1.0`, `top_p=0.95`, `n=1`,
+`presence_penalty=0`, and `frequency_penalty=0`. Keep requested output at or
+below 131072 tokens for `kimi-k3` and 32768 tokens for `kimi-k2.7-code`. For
+Chat Completions, send either `max_tokens` or `max_completion_tokens`, never
+both.
+
 ## Routing
 
 - Kimi API on RunAPI: <https://runapi.ai/models/kimi>

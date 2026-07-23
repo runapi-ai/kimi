@@ -130,6 +130,26 @@ curl https://runapi.ai/v1/models \
 | `kimi-k2.6` | Latest Kimi K2 chat workloads |
 | `kimi-k2.5` | Kimi K2.5 compatibility |
 
+## K3 and K2.7 Code capability boundary
+
+Across Chat Completions, Responses, Messages, and Gemini native, RunAPI supports
+basic text, final answers, canonical reasoning/cache Usage, and automatic cache
+handling for `kimi-k3` and `kimi-k2.7-code`. Raw `reasoning_content` is not
+returned.
+
+Do not send explicit reasoning controls, tools or tool history, multimodal
+content, structured-output fields, cache IDs/TTL controls, opaque continuation
+state, or signed thought blocks. These shapes fail before a task is created.
+`kimi-k3` reasoning effort and both models' tools/multimodal features are
+`native-only`; `kimi-k2.7-code` reasoning effort, explicit cache expiry,
+opaque continuation, and protocol-signed thoughts are `cull`.
+
+Omit sampling controls, or use `temperature=1.0`, `top_p=0.95`, `n=1`,
+`presence_penalty=0`, and `frequency_penalty=0`. Keep requested output at or
+below 131072 tokens for `kimi-k3` and 32768 tokens for `kimi-k2.7-code`. For
+Chat Completions, send either `max_tokens` or `max_completion_tokens`, never
+both.
+
 ## References
 
 - Model overview, pricing, and rate limits: https://runapi.ai/models/kimi.md
@@ -142,6 +162,8 @@ curl https://runapi.ai/v1/models \
   inline them in commits or shell history.
 - Default new integrations to the OpenAI-compatible client at
   `https://runapi.ai/v1`.
+- For `kimi-k3` and `kimi-k2.7-code`, send basic text only and consume the final
+  answer plus Usage; do not depend on raw reasoning or stateful continuation.
 - Use streaming for responses longer than a few hundred tokens.
 - For pricing, rate-limit, and commercial-usage answers, link to
   https://runapi.ai/models/kimi.md rather than copying values.
