@@ -23,7 +23,7 @@
 
 Call the Kimi API through RunAPI with the official OpenAI SDK or any
 OpenAI-compatible client. Point clients at `https://runapi.ai/v1`, send
-`kimi-k2.7-code`, `kimi-k2.6`, or `kimi-k2.5`, and pay through one RunAPI balance. This skill
+`kimi-k3`, `kimi-k2.7-code`, `kimi-k2.6`, or `kimi-k2.5`, and pay through one RunAPI balance. This skill
 teaches Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents how to wire Kimi
 requests through RunAPI.
 
@@ -59,7 +59,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="kimi-k2.6",
+    model="kimi-k3",
     messages=[{"role": "user", "content": "Hello, Kimi!"}],
 )
 print(response.choices[0].message.content)
@@ -86,6 +86,7 @@ Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 
 | Model ID | Notes |
 |---|---|
+| `kimi-k3` | Current flagship with always-on reasoning; basic text requests only |
 | `kimi-k2.7-code` | Dedicated coding model with always-on thinking |
 | `kimi-k2.6` | Latest Kimi K2 chat workloads |
 | `kimi-k2.5` | Kimi K2.5 compatibility |
